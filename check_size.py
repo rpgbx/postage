@@ -148,5 +148,5 @@ def has_items():
     elif not answer.lower() == "yes" and not answer.lower() == "no":
         print("")
         # catches input errors
-        input("Sorry, that's not a valid answer. Try again. (Hit enter)")
+        print("Sorry, that's not a valid answer. Try again.")
         return has_items()
