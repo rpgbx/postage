@@ -43,17 +43,17 @@ This function will calculate and print the cost of mailing our item.
     The program will go back to main() to ask the user if they want to check the cost of another item.
 """
 
-
 from constants import *
 
 """
-# this function will help determine whether to calculate cost for STANDARD/IRREGULAR envelopes or LARGE envelopes
-# it will then execute the appropriate function depending on the item['type'].
-# standard/irregular envelopes calculate cost based on standard pricing.
-# large envelopes calculate cost based on large pricing.
+This function will help determine whether to calculate cost for STANDARD/IRREGULAR envelopes or LARGE envelopes
+It will then execute the appropriate function depending on the item['type'].
+Standard/irregular envelopes calculate cost based on standard pricing.
+Large envelopes calculate cost based on large pricing.
 """
-def calculate_cost(item):
 
+
+def calculate_cost(item):
     # calculate standard postage if the item type is a standard or irregular envelope.
     if item['type'] == "standard" or item['type'] == "irregular":
         calculate_standard_postage(item)
@@ -74,7 +74,7 @@ def calculate_standard_postage(item):
 
     # calculate price for items more than 1 oz. but less than or equal to 3.5 oz.
     if 1 < item['weight'] <= 3.5:
-        for i in range(2,5):
+        for i in range(2, 5):
             if item['weight'] <= i:
                 # update item['cost']
                 item['cost'] = base_postage + (ADDITIONAL_OZ * (i - 1))
@@ -98,11 +98,6 @@ def calculate_large_postage(item):
             if weight <= i:
                 item['cost'] = base_postage + (LARGE_ENVELOPE_ADD_OZ * (i - 1))
                 break
-    elif weight > 13:
-        print("")
-        print('Sorry, your package is too large to be mailed as a letter. 😭')
-        print('Please take it to your local USPS store and have it delivered as a parcel. 📦')
-        item['type'] = "parcel"
 
 
 # this function prints the final cost of the postage depending on item['type']
@@ -134,14 +129,13 @@ def print_standard_pricing(item):
         print("Forever stamps are currently worth $", str(FOREVER),
               "and Additional Ounce stamps are currently worth $", str(ADDITIONAL_OZ) + ".")
     exitable_input("Don't have stamps? Support USPS by buying stamps here: "
-          "https://store.usps.com/store/results/stamps/_/N-9y93lv (Hit enter to continue)")
+                   "https://store.usps.com/store/results/stamps/_/N-9y93lv (Hit enter to continue)")
 
 
 # prints pricing to mail large item/small item above 3.5 oz. out.
 # only prints the cost of mailing the item
-    # FOREVER/ADDITIONAL_OUNCE stamps don't work on larger envelopes (you have to use monetary value stamps.)
+# FOREVER/ADDITIONAL_OUNCE stamps don't work on larger envelopes (you have to use monetary value stamps.)
 # prints values of definitive value stamps user can buy.
-#
 def print_large_pricing(item):
     print("")
     print("The cost of mailing your item is $%.2f. 💸" % item['cost'])
@@ -149,4 +143,4 @@ def print_large_pricing(item):
           "and every additional ounce costs an additional $%.2f" % LARGE_ENVELOPE_ADD_OZ + ".")
     print("You can purchase definitive-value stamps in values of", DEFINITIVE_PRICING_DENOMINATIONS + ".")
     exitable_input("Don't have stamps? Support USPS by buying stamps here: "
-          "https://store.usps.com/store/results/stamps/_/N-9y93lv (Hit enter to continue)")
+                   "https://store.usps.com/store/results/stamps/_/N-9y93lv (Hit enter to continue)")
