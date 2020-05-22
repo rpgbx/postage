@@ -20,7 +20,12 @@ def weight(item):
     # check if it's too heavy to send as standard/irregular envelope
     # if it's heavier than 3.5 oz, we'll update the item['type'] to be large instead.
     if item['type'] == "standard" or item['type'] == "irregular":
-        item['type'] = check_heavy_reg_envelope(item)
+        check_heavy_reg_envelope(item)
+
+    # check if it's too heavy to send as large envelope
+    # if it's heavier than 13 oz, update item['type'] to be parcel and don't calculate cost
+    elif item['type'] == 'large':
+        check_heavy_lrg_envelope(item)
 
 
 #################################### HELPER FUNCTIONS ####################################
@@ -61,4 +66,12 @@ def check_heavy_reg_envelope(item):
               "That means you'll have to mail it as a LARGE envelope.")
         print("Don't worry -- we'll calculate the cost for you!")
         item['type'] = "large"
-    return item['type']
+
+
+# this function changes item['type'] of a large envelope to parcel if weight is above 13 oz.
+def check_heavy_lrg_envelope(item):
+    if item['weight'] > 13:
+        print("")
+        print('Sorry, your package is too large to be mailed as a letter. 😭')
+        print('Please take it to your local USPS store and have it delivered as a parcel. 📦')
+        item['type'] = 'parcel'
