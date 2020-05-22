@@ -35,7 +35,7 @@ def main():
     while run_loop:
         check_item(item)
 
-        if item['type'] == "postcard":
+        if item['type'] == "postcard" or item['type'] == "parcel":
             run_loop = run_program(item)
         # move onto checking weight and cost of item if it's NOT a postcard and NOT parcel
         elif not item['type'] == "postcard" and not item['type'] == "parcel":
