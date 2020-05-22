@@ -70,6 +70,12 @@ def run_program(item):
         # ends loop
         return False
 
+    # catches input errors
+    elif not check_another_item.lower() == "yes" and not check_another_item.lower() == "no":
+        print("")
+        print("Sorry, that's not a valid answer. Try again.")
+        return run_program(item)
+
 
 # This provided line is required at the end of a Python file
 # to call the main() function.
