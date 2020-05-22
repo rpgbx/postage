@@ -64,7 +64,7 @@ def run_program(item):
         return True
 
     # if not, end the program
-    elif check_another_item.lower() == "no":
+    elif check_another_item.lower() == "no" or check_another_item.lower() == "exit":
         print("")
         print("Thanks for using Postage Calculator! 🥳")
         # ends loop

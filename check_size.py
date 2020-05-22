@@ -42,7 +42,7 @@ def check_postcard(item):
     print("")
     print('Is your item a POSTCARD? 🗺')
     print('(Postcards cannot be more than 6" in length and 4.25" in width.)')
-    size = exitable_input('Please enter "yes" or "no" (type "exit" to quit at any time): ')
+    size = exitable_input('Please enter "yes" or "no": ')
 
     # this runs if the item is a postcard. Print the cost, what kinds of stamps to use, and where to purchase stamps
     if size.lower() == "yes":

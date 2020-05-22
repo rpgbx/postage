@@ -98,6 +98,11 @@ def calculate_large_postage(item):
             if weight <= i:
                 item['cost'] = base_postage + (LARGE_ENVELOPE_ADD_OZ * (i - 1))
                 break
+    elif weight > 13:
+        print("")
+        print('Sorry, your package is too large to be mailed as a letter. 😭')
+        print('Please take it to your local USPS store and have it delivered as a parcel. 📦')
+        item['type'] = "parcel"
 
 
 # this function prints the final cost of the postage depending on item['type']
@@ -117,17 +122,17 @@ def print_standard_pricing(item):
     print("The cost of mailing your item is $%.2f. 💸" % item['cost'])
     if item['add_oz'] == 0:
         print("You can use 1 FOREVER STAMP to mail this item.")
-        print("Forever stamps are currently worth", str(FOREVER) + ".")
+        print("Forever stamps are currently worth $", str(FOREVER) + ".")
     # because I care about singular versus plural harharhar
     elif item['add_oz'] == 1:
         print("You can use 1 FOREVER STAMP and 1 ADDITIONAL OUNCE STAMP to mail this item.")
-        print("Forever stamps are currently worth", str(FOREVER),
-              "and Additional Ounce stamps are currently worth", str(ADDITIONAL_OZ) + ".")
+        print("Forever stamps are currently worth $", str(FOREVER),
+              "and Additional Ounce stamps are currently worth $", str(ADDITIONAL_OZ) + ".")
     else:
         print("You can use 1 FOREVER STAMP and " + str(item['add_oz']) +
               " ADDITIONAL OUNCE STAMPS to mail this item.")
-        print("Forever stamps are currently worth", str(FOREVER),
-              "and Additional Ounce stamps are currently worth", str(ADDITIONAL_OZ) + ".")
+        print("Forever stamps are currently worth $", str(FOREVER),
+              "and Additional Ounce stamps are currently worth $", str(ADDITIONAL_OZ) + ".")
     exitable_input("Don't have stamps? Support USPS by buying stamps here: "
           "https://store.usps.com/store/results/stamps/_/N-9y93lv (Hit enter to continue)")
 

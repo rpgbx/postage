@@ -24,6 +24,8 @@ DEFINITIVE_PRICING_DENOMINATIONS = "$1, $2, $5, and $10"
 def exitable_input(input_text):
     user_response = input(input_text)
     if user_response.lower() == "exit":
+        print("")
+        print("Thanks for using Postage Calculator! 🥳")
         sys.exit(0)
     else:
         return user_response
